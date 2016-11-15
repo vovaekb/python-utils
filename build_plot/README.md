@@ -1,7 +1,7 @@
 ## build_plot
 Utility for building plot from data stored in file
 
-Usage: python build_plot.py -f <data_file>
+Usage: python build_plot.py -f \<data_file>
 
 Data format in file
 ```

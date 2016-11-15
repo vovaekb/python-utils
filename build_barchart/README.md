@@ -1,7 +1,7 @@
 ## build_barchart
 Utility for building bar chart from data stored in file
 
-Using: python build_histogram.py -f <file> -m <y_max> -x <x_label> -y <y_label>
+Using: python build_histogram.py -f \<file> -m \<y_max> -x \<x_label> -y \<y_label>
 
 where y_max - maximum value for y axis.
 
