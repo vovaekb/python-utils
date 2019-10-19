@@ -16,20 +16,20 @@ def read_data(file):
     zero_vals = [v for v in values if v == 0]
     zeros = len(zero_vals)
 
-    print 'zeros ',zeros,' in total ',data_len,'\n'
+    print('zeros ',zeros,' in total ',data_len,'\n')
 
 def main(argv):
     data_file = ''
     try:
         opts, args = getopt.getopt(argv,"f:")
     except getopt.GetoptError:
-        print 'python calc_sparseness.py -f <data_file>'
+        print('python calc_sparseness.py -f <data_file>')
         sys.exit(2)
     for opt, arg in opts:
         if opt == '-f':
             data_file = arg
     
-    print 'data file:', data_file,'\n'
+    print('data file:', data_file,'\n')
     read_data(data_file)
 
 if __name__ == "__main__":
