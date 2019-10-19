@@ -1,11 +1,15 @@
 ## build_barchart
-Utility for building bar chart from data stored in file
+Utility for building bar chart from data stored in file. This utility can be useful in scientific work for experimental data analysis.
 
-Using: python build_histogram.py -f \<file> -m \<y_max> -x \<x_label> -y \<y_label>
+### Prerequisities
+The script requires matplotlib installed. To install it use pip:
 
-where y_max - maximum value for y axis.
+```
+pip install matplotlib
+```
 
-Data format in file
+### Usage
+Create a file with data in the following format
 ```
 1: 0
 2: 1
@@ -13,3 +17,17 @@ Data format in file
 4: 2
 ...
 ```
+First number specifies the values along the x axis i.e. bins in the histogram. Second number if the value for each bin i.e. the height of the bin.
+
+Using: python build_histogram.py -f \<file> -m \<y_max> -x \<x_label> -y \<y_label>
+
+where y_max - maximum value for y axis.
+
+The script outputs
+```
+Barchart was saved in file  <file>.png
+```
+Sctipt creates a barchart like this
+
+![](_readme/images/barchart.png)
+
