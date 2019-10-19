@@ -7,7 +7,7 @@ import sys, getopt
 import numpy as np
 import matplotlib.pyplot as plt
 
-y_lim = 20 # the number of data items (20 for models / 25 for scenes)
+y_lim = 20 # the number of data items
 x_label = ""
 y_label = ""
 
@@ -27,13 +27,12 @@ def read_file(file_name):
     width = 1
     
     plt.bar(x, values, width, color="blue")
-    plt.xlabel(x_label) # "Words")
-    plt.ylabel(y_label) # "Occurrences")
+    plt.xlabel(x_label)
+    plt.ylabel(y_label)
     plt.ylim(0,y_lim)
-    #plt.show()
     barchart_file = file_name+'.png'
     plt.savefig(barchart_file)
-    print 'Barchart was saved in file ',barchart_file
+    print('Barchart was saved in file ',barchart_file)
 
 def main(argv):
     file_name = ""
@@ -41,11 +40,11 @@ def main(argv):
     try:
         opts, args = getopt.getopt(argv,"h:f:m:x:y:")
     except getopt.GetoptError:
-        print 'Unknown arguments!\nUsing: python build_histogram.py -f <file> -m <y_max> -x <x_label> -y <y_label>'
+        print('Unknown arguments!\nUsing: python build_histogram.py -f <file> -m <y_max> -x <x_label> -y <y_label>')
         sys.exit(2)
     for opt, arg in opts:
         if opt == '-h':
-            print 'Using: python build_histogram.py -f <file> -m <y_max> -x <x_label> -y <y_label>'
+            print('Using: python build_histogram.py -f <file> -m <y_max> -x <x_label> -y <y_label>')
             sys.exit()
         elif opt == '-f':
             file_name = arg
@@ -55,10 +54,6 @@ def main(argv):
             x_label = arg
         elif opt == '-y':
             y_label = arg
-
-    #print 'max y:',y_lim
-    #print 'x label:',x_label
-    #print 'y label:',y_label
 
     read_file(file_name)
 
