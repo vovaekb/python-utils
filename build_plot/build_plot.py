@@ -30,9 +30,9 @@ def read_data(file):
                 values_str = strs[1]
                 #values_arr = values_str.split(',')
                 values = [float(v) for v in values_str.split(',')]
-                print axis_label,' values count: ',len(values),'\n'
-                print values
-                print '\n'
+                print('%s values count: %s\n',(axis_label, len(values)))
+                print(values)
+                print('\n')
                 
                 if line_n == 0:
                     x_values = values
@@ -53,22 +53,22 @@ def read_data(file):
     plt.axis(plot_axis)
     plt.savefig(file+'.png')
     
-    print file,' plot was successfully built\n'
+    print('%s plot was successfully built\n' % file)
 
 
 def main(argv):
-    print 'start script build_plot.py\n'
+    print('start script build_plot.py\n')
     data_file = ''
     try:
         opts, args = getopt.getopt(argv,"f:")
     except getopt.GetoptError:
-        print 'build_plot.py -f <data_file>'
+        print('build_plot.py -f <data_file>')
         sys.exit(2)
     for opt, arg in opts:
         if opt == '-f':
             data_file = arg
 
-    print 'data_file: ',data_file,'\n'
+    print('data_file: %s\n', data_file)
     read_data(data_file)
 
 '''
@@ -84,7 +84,7 @@ def main(argv):
     plt.axis([0, 5500, -0.5, 1.05])
     plt.savefig(plot_name+'.png')
 
-    print plot_name,' plot was successfully built\n'
+    print(plot_name,' plot was successfully built\n')
 '''
 
 if __name__ == "__main__":
