@@ -19,7 +19,7 @@ Create a file with data in the following format
 ```
 First number specifies the values along the x axis i.e. bins in the histogram. Second number if the value for each bin i.e. the height of the bin.
 
-Using: python build_histogram.py -f \<file> -m \<y_max> -x \<x_label> -y \<y_label>
+Using: python build_barchart.py -f \<file> -m \<y_max> -x \<x_label> -y \<y_label>
 
 where y_max - maximum value for y axis.
 

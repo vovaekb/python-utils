@@ -7,14 +7,19 @@ import sys, getopt
 import numpy as np
 import matplotlib.pyplot as plt
 
-y_lim = 20 # the number of data items
+y_lim = 20 #
 x_label = ""
 y_label = ""
 
-def read_file(file_name):
-    global y_lim
-    global x_label
-    global y_label
+def build_chart(file_name, x_label, y_label, y_lim=20):
+    '''
+    Build chart using data from file
+    :param file_name:
+    :param x_label:
+    :param y_label:
+    :param y_lim: the number of data items
+    :return:
+    '''
     values = []
     for line in open(file_name, 'r'):
         if line != '':
@@ -36,7 +41,6 @@ def read_file(file_name):
 
 def main(argv):
     file_name = ""
-    global y_lim, x_label, y_label
     try:
         opts, args = getopt.getopt(argv,"h:f:m:x:y:")
     except getopt.GetoptError:
@@ -55,7 +59,7 @@ def main(argv):
         elif opt == '-y':
             y_label = arg
 
-    read_file(file_name)
+    build_chart(file_name, x_label, y_label, y_lim)
 
 
 if __name__ == '__main__':
