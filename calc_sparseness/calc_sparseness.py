@@ -3,11 +3,11 @@
 
 import sys, getopt
 
-def read_data(file):
-    data_len = 0
-    zeros = 0
 
-    infile = open(file, 'r')
+def read_data(file_name):
+    data_len, zeros = 0, 0
+
+    infile = open(file_name, 'r')
     line = infile.readline()
     #print line,'\n'
     values = [float(v) for v in line.split(' ') if len(v)]
@@ -18,7 +18,7 @@ def read_data(file):
 
     print('zeros ',zeros,' in total ',data_len,'\n')
 
-def main(argv):
+def calc_sparseness(argv):
     data_file = ''
     try:
         opts, args = getopt.getopt(argv,"f:")
@@ -33,4 +33,4 @@ def main(argv):
     read_data(data_file)
 
 if __name__ == "__main__":
-    main(sys.argv[1:])
+    calc_sparseness(sys.argv[1:])

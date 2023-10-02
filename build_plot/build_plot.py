@@ -1,14 +1,16 @@
 #!/usr/bin/python
-# Filename: build_plot.py
-#
-# Utility for building plot from data stored in file
-# Usage: python build_plot.py -f <data_file>
-#
-# Data format in file
-#
-# x_axis_data: 0.5, 0.25, 0.31
-# y_axis_data: 100, 200, 500
-# Axis: 0, 1.05, 0, 500   ## y_min, y_max, x_min, x_max
+"""
+Filename: build_plot.py
+
+Utility for building plot from data stored in file
+Usage: python build_plot.py -f <data_file>
+
+Data format in file
+
+x_axis_data: 0.5, 0.25, 0.31
+y_axis_data: 100, 200, 500
+Axis: 0, 1.05, 0, 500   ## y_min, y_max, x_min, x_max
+"""
 
 
 import sys, getopt
@@ -16,18 +18,14 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 def read_data(file):
-    x_values = []
-    y_values = []
-    x_label = ''
-    y_label = ''
-    plot_axis = []
+    x_values, y_values, plot_axis = [], [], []
+    x_label, y_label = '', ''
     line_n = 0
     for line in open(file, 'r'):
         if line != '':
             strs = line.split(':')
             if strs[0] != "Axis":
-                axis_label = strs[0]
-                values_str = strs[1]
+                axis_label, values_str = strs[0], strs[1]
                 #values_arr = values_str.split(',')
                 values = [float(v) for v in values_str.split(',')]
                 print('%s values count: %s\n',(axis_label, len(values)))
@@ -71,21 +69,6 @@ def main(argv):
     print('data_file: %s\n', data_file)
     read_data(data_file)
 
-'''
-    x_values = [ 50, 100, 200, 400, 1000, 2000, 5000 ]
-    y_values = [ 0.286, 0.286, 0.308, 0.308, 0.333, 0.125, 0.307 ]
-    x_axis = "Vocabulary size"
-    y_axis = "Precision"
-    plot_name = "size_precision"
-
-    plt.plot(x_values, y_values)
-    plt.xlabel(x_axis)
-    plt.ylabel(y_axis)
-    plt.axis([0, 5500, -0.5, 1.05])
-    plt.savefig(plot_name+'.png')
-
-    print(plot_name,' plot was successfully built\n')
-'''
 
 if __name__ == "__main__":
     main(sys.argv[1:])
