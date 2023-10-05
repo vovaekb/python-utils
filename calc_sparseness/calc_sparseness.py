@@ -4,21 +4,34 @@
 import sys, getopt
 
 
-def read_data(file_name):
-    data_len, zeros = 0, 0
+class SparsenessCalculator():
+    """Class for calculating sparseness"""
+    def __init__(self, file_path):
+        """Constructor for SparsenessCalculator"""
+        self.file_path = file_path
+        self.data = ''
 
-    infile = open(file_name, 'r')
-    line = infile.readline()
-    #print line,'\n'
-    values = [float(v) for v in line.split(' ') if len(v)]
-    data_len = len(values)
+    def read_data(self,):
+        """read data from file"""
+        print('read_data: %s' % self.file_path)
 
-    zero_vals = [v for v in values if v == 0]
-    zeros = len(zero_vals)
+        with open(self.file_path, 'r') as f:
+            self.data = f.readline()
 
-    print('zeros ',zeros,' in total ',data_len,'\n')
+    def calculate(self,):
+        """calculate sparseness"""
+        self.read_data()
+        values = [float(v) for v in self.data.split(' ') if len(v)]
+        data_len = len(values)
+
+        zero_vals = [v for v in values if v == 0]
+        zeros = len(zero_vals)
+
+        print('zeros ', zeros, ' in total ', data_len, '\n')
+
 
 def calc_sparseness(argv):
+    print(argv)
     data_file = ''
     try:
         opts, args = getopt.getopt(argv,"f:")
@@ -30,7 +43,9 @@ def calc_sparseness(argv):
             data_file = arg
     
     print('data file:', data_file,'\n')
-    read_data(data_file)
+    calculator = SparsenessCalculator(data_file)
+    calculator.calculate()
+
 
 if __name__ == "__main__":
     calc_sparseness(sys.argv[1:])
